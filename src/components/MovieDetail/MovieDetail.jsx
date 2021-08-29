@@ -1,10 +1,10 @@
 import {useSelector} from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
-
 
 // nothing shows up for this????
 function MovieDetail() {
+    const history = useHistory();
     const genres = useSelector(store => store.genres);
     const index = Number(useParams().id) - 1; // - 1
     const movie = useSelector(store => store.movies[index]); // but how to use particular one??
@@ -17,14 +17,11 @@ function MovieDetail() {
 
     return (
         <>
-        <h1>SFASDFASDFASDF</h1>     
+        <button onClick={() => history.push('/')}>Back to List</button>
         <h1>{movie.title}</h1>
         <img src={movie.poster} />
         <ul>
-            {genres.map(genre => {
-            console.log('this genre is: ', genre)
-            return (<li>{genre}</li>);
-            })}
+            {genres.map(genre => <li>{genre}</li>)}
         </ul>
         <p>{movie.description}</p>
         </>
