@@ -15,6 +15,18 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_MOVIE', fetchMovie);
+    yield takeEvery('FETCH_ALL_GENRES', fetchAllGenres);
+    yield takeEvery('ADD_MOVIE', addMovie)
+}
+
+function* addMovie(action) {
+    try {
+        yield axios.post('/api/movie', {data: action.payload})
+        // update the movie list
+    } catch (erro) {
+        console.log('Failed to POST movie: ', error);
+        alert('Failed to POST movie. See console for details.');
+    }
 }
 
 function* fetchMovie(action) {
@@ -31,6 +43,18 @@ function* fetchMovie(action) {
 
 }
 
+function* fetchAllGenres() {
+    try {
+        const response = yield axios.get('/api/genre');
+        yield put({
+            type: 'SET_ALL_GENRES',
+            payload: response.data
+        })
+    } catch (error) {
+        console.log('Failed to fetch allGenres: ', error);
+        alert('Failed to get all genres.');
+    }
+};
 
 function* fetchAllMovies() {
     // get all movies from the DB
@@ -57,6 +81,15 @@ const movies = (state = [], action) => {
     }
 }
 
+const allGenres = (state = [], action) => {
+    switch(action.type) {
+        case 'SET_ALL_GENRES':
+            return action.payload
+        default:
+            return state;
+    }
+}
+
 // Used to store the movie genres
 const genres = (state = [], action) => {
     switch (action.type) {
@@ -72,6 +105,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        allGenres
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
