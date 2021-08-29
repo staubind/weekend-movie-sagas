@@ -21,4 +21,15 @@ router.get('/:id', (req, res) => {
   });
 });
 
+router.get('/', (req, res) => {
+  const sqlQuery = `SELECT "name" FROM "genres"`
+  pool.query(sqlQuery).then(dbRes => {
+    res.send(dbRes.rows);
+  }).catch(error => {
+    console.log('Failed to get all the genres');
+    res.sendStatus(500);
+  })
+});
+
+
 module.exports = router;
