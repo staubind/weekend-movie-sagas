@@ -9,7 +9,7 @@ function AddMovie() {
     const [movieGenres, setMovieGenres] = useState([]);
 
     // maybe useState to capture the array of genres??
-    // how collect info from a select/option html eleement
+    // how collect info from a select/option html element
         // add when one is selected
         // remove from array when deselected
 
@@ -30,9 +30,14 @@ function AddMovie() {
 
     const handleSelector = (event) => {
         let options = []; 
-        // grab the string values of our genres from the selector
-        for (let option of event.target.selectedOptions) {
-            options.push(option.value)
+        // for each selected values (option.value)
+        for (let option of event.target.selectedOptions) {  
+            // find the id associated with it          
+            for (let genre of allGenres) {
+                if (genre.name === option.value) {
+                    options.push(genre.id);
+                }
+            }
         }
         setMovieGenres(options);
     };
