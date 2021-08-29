@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
-
+import {Link} from 'react-router-dom';
 function MovieList() {
 
     const dispatch = useDispatch();
@@ -19,7 +19,14 @@ function MovieList() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title}/>
+                            <Link to={`/details/${movie.id}`}>
+                            <img onClick={() => {
+                                dispatch({
+                                    type: 'FETCH_MOVIE',
+                                    payload: movie
+                                })
+                            }} src={movie.poster} alt={movie.title}/>
+                            </Link>
                         </div>
                     );
                 })}
