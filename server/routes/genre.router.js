@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-  const sqlQuery = `SELECT "name" FROM "genres"`
+  const sqlQuery = `SELECT * FROM "genres"`
   pool.query(sqlQuery).then(dbRes => {
     res.send(dbRes.rows);
   }).catch(error => {

@@ -21,7 +21,7 @@ function MovieDetail() {
         <h1>{movie.title}</h1>
         <img src={movie.poster} />
         <ul>
-            {genres.map(genre => <li>{genre}</li>)}
+            {genres.map((genre, i) => <li key={i}>{genre}</li>)}
         </ul>
         <p>{movie.description}</p>
         </>

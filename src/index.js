@@ -21,7 +21,8 @@ function* rootSaga() {
 
 function* addMovie(action) {
     try {
-        yield axios.post('/api/movie', {data: action.payload})
+        // console.log('object to be sent to db: ', action.payload)
+        yield axios.post('/api/movie', action.payload)
         // update the movie list
     } catch (erro) {
         console.log('Failed to POST movie: ', error);
