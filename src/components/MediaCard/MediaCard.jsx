@@ -15,10 +15,10 @@ import {useHistory} from 'react-router-dom';
 // sets up styling
 const useStyles = makeStyles({
   root: {
-    width: 345,
+    width: 160,
   },
   media: {
-    height: 475,
+    height: 240,
   },
 });
 
@@ -43,7 +43,7 @@ export default function MediaCard({movie}) {
           title={movie.title}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="p" component="p">
             {movie.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
