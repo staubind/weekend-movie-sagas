@@ -43,10 +43,10 @@ export default function MediaCard({movie}) {
           title={movie.title}
         />
         <CardContent>
-          <Typography gutterBottom variant="p" component="p">
+          <Typography gutterBottom variant="body2" component="h5">
             {movie.title}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textSecondary">
             {/* {movie.description} */}
           </Typography>
         </CardContent>
