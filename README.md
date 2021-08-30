@@ -1,9 +1,5 @@
-# Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+# Weekend Movie Sagas
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
-
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+This purpose of this project is to practice using Sagas. I created a site that lets users inspect a list of movies and click on them to see more details. Users can also add their own movie. This is accomplished through React, Redux, Sagas, Express, and PostgreSQL. I added some Material UI to make it a bit more visually appealing. If I have time I'll come back to it to practice styling, but it's the functionality that was most important to me.
