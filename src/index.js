@@ -24,7 +24,8 @@ function* addMovie(action) {
         // console.log('object to be sent to db: ', action.payload)
         yield axios.post('/api/movie', action.payload)
         // update the movie list
-    } catch (erro) {
+        fetchAllMovies();
+    } catch (error) {
         console.log('Failed to POST movie: ', error);
         alert('Failed to POST movie. See console for details.');
     }
@@ -62,11 +63,9 @@ function* fetchAllMovies() {
     try {
         const movies = yield axios.get('/api/movie');
         yield put({ type: 'SET_MOVIES', payload: movies.data });
-
     } catch {
         console.log('get all error');
-    }
-        
+    }  
 }
 
 // Create sagaMiddleware
@@ -109,7 +108,7 @@ const storeInstance = createStore(
         allGenres
     }),
     // Add sagaMiddleware to our store
-    applyMiddleware(sagaMiddleware, logger),
+    applyMiddleware(sagaMiddleware), // could include logger but it's more annoying than anything...
 );
 
 // Pass rootSaga into our sagaMiddleware
