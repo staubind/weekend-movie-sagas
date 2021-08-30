@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 import './MovieList.css'
-import {Link} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import MediaCard from '../MediaCard/MediaCard';
 // imports for grid
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 // styles for the grid layout
 const useStyles = makeStyles((theme) => ({
@@ -25,6 +26,7 @@ function MovieList() {
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
     const classes = useStyles()
+    const history = useHistory();
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
@@ -33,7 +35,7 @@ function MovieList() {
     return (
         <main>
             <h1>MovieList</h1>
-            <h3>Don't see what you want? <Link to="/add">Add it!</Link></h3>
+            <h3>Don't see what you want? <Button variant="contained" onClick={() => history.push('/add')}>Add it!</Button></h3>
             <Grid container className={classes.root} spacing={2}>
                 <Grid item xs={12}>
                     <Grid container justifyContent="center" spacing={2}>

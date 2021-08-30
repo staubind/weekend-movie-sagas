@@ -19,7 +19,7 @@ function MovieDetail() {
 
     return (
         <>
-        <Button onClick={() => history.push('/')}>Back to List</Button>
+        <Button variant="contained" onClick={() => history.push('/')}>Back to List</Button>
         <h1>{movie.title}</h1>
         <img src={movie.poster} />
         <ul>

@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import {Button, TextField} from '@material-ui/core';
 
 function AddMovie() {
     const dispatch = useDispatch();
@@ -54,18 +55,18 @@ function AddMovie() {
 
     return (
         <>
-            <button onClick={() => history.push('/')}>Back to List</button>
+            <Button variant="contained" onClick={() => history.push('/')}>Back to List</Button>
             <form onSubmit={(event) => addMovie(event)}>
-                <input value={movie.title} onChange={(event) => handleInput(event, 'title')} placeholder="Movie Title" type="text" />
-                <input value={movie.poster} onChange={(event) => handleInput(event, 'poster')} placeholder="Movie Poster URL" type="text" />
-                <input value={movie.description} onChange={(event) => handleInput(event, 'description')} placeholder="Movie Description" type="textarea" />
+                <TextField required variant="outlined" label="Title" value={movie.title} onChange={(event) => handleInput(event, 'title')} placeholder="Movie Title" type="text" />
+                <TextField required variant="outlined" label="Poster Link" value={movie.poster} onChange={(event) => handleInput(event, 'poster')} placeholder="Movie Poster URL" type="text" />
+                <TextField required multiline variant="outlined" label="Description" value={movie.description} onChange={(event) => handleInput(event, 'description')} placeholder="Movie Description" type="textarea" />
                 {/* genre selection menu */}
                 <label htmlFor="genres">Genres:</label>
-                <select onChange={(event) => handleSelector(event)} name="genres" multiple>
+                <select required onChange={(event) => handleSelector(event)} name="genres" multiple>
                     {allGenres.map(genre => <option key={genre.id}>{genre.name}</option>)}
                 </select>
 
-                <button type="submit">Add Movie</button>
+                <Button variant="contained" color="primary" type="submit">Add Movie</Button>
             </form>
         </>
     );
