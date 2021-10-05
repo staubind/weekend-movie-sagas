@@ -47,17 +47,10 @@ export default function MediaCard({movie}) {
             {movie.title}
           </Typography>
           <Typography variant="body2" color="textSecondary">
-            {/* {movie.description} */}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        {/* <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button> */}
       </CardActions>
     </Card>
   );

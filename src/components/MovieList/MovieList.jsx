@@ -39,6 +39,7 @@ function MovieList() {
             <Grid container className={classes.root} spacing={2}>
                 <Grid item xs={12}>
                     <Grid container justifyContent="center" spacing={2}>
+                        {/* displays the movie cards */}
                         {movies.map(movie => (
                             <Grid key={movie.id} item>
                                 <MediaCard movie={movie} className={classes.paper} />
@@ -47,13 +48,6 @@ function MovieList() {
                     </Grid>
                 </Grid>
             </Grid>
-            {/* <section className="movies">
-                {movies.map(movie => {
-                    return (
-                        <MediaCard key={movie.id} movie={movie}  />
-                    );
-                })}
-            </section> */}
         </main>
 
     );
