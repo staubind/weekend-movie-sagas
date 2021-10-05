@@ -9,12 +9,8 @@ function MovieDetail() {
     const id = Number(useParams().id); 
     // grab the movie object that has the id we want
     const movie = useSelector(store => (store.movies.filter(element => element.id === id)[0])); 
-    // const movie = movies.filter(element => element.id===id)[0]
     
     useEffect(() => {
-        console.log('id in movie detail is: ', id);
-        console.log('movie in movie detail is: ', movie);
-        console.log('genres in movie detail is: ', genres);
     }, [])
 
     return (
@@ -22,6 +18,7 @@ function MovieDetail() {
         <Button variant="contained" onClick={() => history.push('/')}>Back to List</Button>
         <h1>{movie.title}</h1>
         <img src={movie.poster} />
+        {/* list out the movies details */}
         <ul>
             {genres.map((genre, i) => <li key={i}>{genre}</li>)}
         </ul>

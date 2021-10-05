@@ -21,7 +21,6 @@ function* rootSaga() {
 
 function* addMovie(action) {
     try {
-        // console.log('object to be sent to db: ', action.payload)
         yield axios.post('/api/movie', action.payload)
         // update the movie list
         fetchAllMovies();
@@ -108,7 +107,7 @@ const storeInstance = createStore(
         allGenres
     }),
     // Add sagaMiddleware to our store
-    applyMiddleware(sagaMiddleware), // could include logger but it's more annoying than anything...
+    applyMiddleware(sagaMiddleware), 
 );
 
 // Pass rootSaga into our sagaMiddleware

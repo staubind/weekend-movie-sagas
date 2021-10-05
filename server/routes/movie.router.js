@@ -17,7 +17,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  // console.log('this is what we received from the client: ', req.body);
   // RETURNING "id" will give us back the id of the created movie
   const insertMovieQuery = `
   INSERT INTO "movies" ("title", "poster", "description")
@@ -37,7 +36,7 @@ router.post('/', (req, res) => {
       INSERT INTO "movies_genres" ("movie_id", "genre_id")
       VALUES  ($1, $2);
       `
-    // SECOND QUERY ADDS GENRE FOR THAT NEW MOVIE
+    // second query adds the genre 
     pool.query(insertMovieGenreQuery, [createdMovieId, req.body.genres[i]]).then(result => {
       //Now that both are done, send back success!
       if (i === req.body.genres.length - 1) {
